@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "",
+      "name": "",
+      "age": ""
+    }
+  ],
+  "musics": [
+    {
+      "id": "",
+      "name": "",
+      "author": "",
+      "playlistId": ""
+    }
+  ],
+  "playlists": [
+    {
+      "id": "",
+      "name": "",
+      "userId": ""
+    }
+  ]
+}
