@@ -1,4 +1,4 @@
-use std::{error::Error, sync::Arc};
+use std::{env, error::Error, sync::Arc};
 
 use crate::routes::router;
 use console::Style;
@@ -22,7 +22,10 @@ async fn main() {
 }
 
 fn load_data() -> Result<Data, Box<dyn Error>> {
-    let data = std::fs::read_to_string("../database.json")?;
+    let default_path = "../database.json";
+    let database_path = env::var("DATABASE_PATH").unwrap_or_else(|_| default_path.to_string());
+
+    let data = std::fs::read_to_string(database_path)?;
     let data: Data = serde_json::from_str(&data)?;
 
     Ok(data)

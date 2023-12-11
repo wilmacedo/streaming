@@ -1,0 +1,12 @@
+version: '3.9'
+name: 'comp-dist'
+
+services:
+  rust-app:
+    build: ./rs
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_PATH=/app/database.json
+    volumes:
+      - ./database.json:/app/database.json
