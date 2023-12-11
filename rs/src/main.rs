@@ -1,6 +1,6 @@
 use std::{error::Error, sync::Arc};
 
-use crate::routes::routes::routes;
+use crate::routes::router;
 use console::Style;
 use models::models::Data;
 
@@ -15,7 +15,7 @@ async fn main() {
 
     let data = load_data().expect("Failed to load data");
     let data = Arc::new(data);
-    let routes = routes(data);
+    let routes = router::routes(data);
 
     println!("\nServer ready at {}", blue.apply_to(&target));
     warp::serve(routes).run(([0, 0, 0, 0], 8000)).await;

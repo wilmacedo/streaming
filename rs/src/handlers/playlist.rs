@@ -14,3 +14,7 @@ pub async fn find(id: String, data: Arc<Data>) -> Result<Box<dyn warp::Reply>, w
         ))),
     }
 }
+
+pub async fn list(data: Arc<Data>) -> Result<impl warp::Reply, warp::Rejection> {
+    Ok(warp::reply::json(&data.playlists))
+}
