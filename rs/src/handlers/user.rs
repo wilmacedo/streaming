@@ -1,11 +1,16 @@
-use crate::models::models::User;
+use std::sync::Arc;
 
-pub async fn find(id: String) -> Result<impl warp::Reply, warp::Rejection> {
-    let user = User {
-        id,
-        name: String::from("Wilson"),
-        age: 24,
-    };
+use crate::models::models::{Data, ErrorResponse};
 
-    Ok(warp::reply::json(&user))
+pub async fn find(id: String, data: Arc<Data>) -> Result<Box<dyn warp::Reply>, warp::Rejection> {
+    match data.users.iter().find(|user| user.id == id) {
+        Some(user) => Ok(Box::new(warp::reply::json(&user))),
+        None => Ok(Box::new(warp::reply::with_status(
+            warp::reply::json(&ErrorResponse {
+                message: String::from("user not found"),
+                code: 404,
+            }),
+            warp::http::StatusCode::NOT_FOUND,
+        ))),
+    }
 }
