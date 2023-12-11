@@ -1,12 +1,10 @@
-const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
-const fs = require('fs');
+const express = require("express");
+const { graphqlHTTP } = require("express-graphql");
+const { buildSchema } = require("graphql");
+const fs = require("fs");
 
-
-const rawData = fs.readFileSync('database.json');
+const rawData = fs.readFileSync("database.json");
 const data = JSON.parse(rawData);
-
 
 const schema = buildSchema(`
   type User {
@@ -38,26 +36,26 @@ const schema = buildSchema(`
   }
 `);
 
-
 const root = {
-  findUser: ({ id }) => data.users.find(user => user.id === id),
+  findUser: ({ id }) => data.users.find((user) => user.id === id),
   listUsers: () => data.users,
-  findMusic: ({ id }) => data.musics.find(music => music.id === id),
+  findMusic: ({ id }) => data.musics.find((music) => music.id === id),
   listMusics: () => data.musics,
-  findPlaylist: ({ id }) => data.playlists.find(playlist => playlist.id === id),
-  listPlaylists: () => data.playlists
+  findPlaylist: ({ id }) =>
+    data.playlists.find((playlist) => playlist.id === id),
+  listPlaylists: () => data.playlists,
 };
-
 
 const app = express();
 
-
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
-  graphiql: true
-}));
-
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  })
+);
 
 const port = 3000;
 app.listen(port, () => {
