@@ -1,12 +1,13 @@
-use crate::handlers;
 use warp::Filter;
 
+use crate::handlers;
+
 pub fn routes() -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
-    get_users()
+    find_user()
 }
 
-fn get_users() -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
+fn find_user() -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
     warp::path!("users" / String)
         .and(warp::get())
-        .and_then(handlers::get_user)
+        .and_then(handlers::user::find)
 }
