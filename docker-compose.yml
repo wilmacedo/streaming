@@ -2,11 +2,11 @@ version: '3.9'
 name: 'comp-dist'
 
 services:
-  # rust-app:
-  #   container_name: rust-app
-  #   build: ./rs
-  #   ports:
-  #     - "8000:8000"
+  rust-app:
+    container_name: rust-app
+    build: ./rs
+    ports:
+      - "8000:8000"
 
   js-app:
     container_name: js-app
