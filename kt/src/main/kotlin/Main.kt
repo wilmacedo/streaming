@@ -178,7 +178,7 @@ class MusicPlaylistsHandler : BaseHandler() {
 
 private fun readSoapData(): SoapData {
     println("Reading SOAP data from JSON file...")
-    val fileContent = File("./src/main/resources/mock/ograndejson.json").readText()
+    val fileContent = File("../database.json").readText()
 
     val moshi = Moshi.Builder()
         .addLast(KotlinJsonAdapterFactory())
