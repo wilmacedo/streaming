@@ -12,4 +12,4 @@ RUN mkdir /app
 
 COPY --from=builder /home/gradle/src/build/libs/ /app/
 
-ENTRYPOINT ["java","-jar","/app/kotlin-docker-gradle-app.jar"]
+ENTRYPOINT ["java","-jar","/app/kt.jar"]
