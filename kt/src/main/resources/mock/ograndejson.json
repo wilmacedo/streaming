@@ -1,0 +1,39 @@
+{
+        "users": [
+                {
+                        "id": "87c2e78c-847b-426f-bc97-9e337011613d",
+                        "name": "Wilson",
+                        "age": 24
+                },
+                {
+                        "id": "4622828d-fd00-432e-a7fc-99ad977f5710",
+                        "name": "Leo",
+                        "age": 22
+                },
+                {
+                        "id": "2b228642-f27a-4265-a8c8-8d3150392f77",
+                        "name": "Lucas",
+                        "age": 26
+                },
+                {
+                        "id": "6d906dd7-523d-4c98-b63c-908741ee1e60",
+                        "name": "Fabio",
+                        "age": 23
+                }
+        ],
+        "musics": [
+                {
+                        "id": "8fbedbe9-e394-4015-96ab-5bd8e9b51d2b",
+                        "name": "Music 01",
+                        "author": "Anyone",
+                        "playlistId": "ae29499b-eb49-47ad-88a4-3b4467ba13d8"
+                }
+        ],
+        "playlists": [
+                {
+                        "id": "ae29499b-eb49-47ad-88a4-3b4467ba13d8",
+                        "name": "Playlist 01",
+                        "userId": "87c2e78c-847b-426f-bc97-9e337011613d"
+                }
+        ]
+}

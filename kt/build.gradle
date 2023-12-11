@@ -10,8 +10,20 @@ repositories {
 }
 
 dependencies {
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.5")
+    implementation("com.squareup.moshi:moshi:1.14.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+    implementation 'com.sun.net.httpserver:http:20070405'
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:3.0.0' // Adjust version as needed
+    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.5' // Adjust version as needed
+    implementation 'org.eclipse:yasson:1.0.5' // Adjust version as needed
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 }
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '17'
+}
+
 
 test {
     useJUnitPlatform()
