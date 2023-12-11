@@ -1,19 +1,19 @@
-# build stage
 FROM golang:1.21-alpine3.18 AS build
 
-# set working directory
-WORKDIR /app
+WORKDIR /build
 
-# copy source code
 COPY . .
 
-# install dependencies
-RUN go mod download
+RUN go mod tidy
 
-# build binary
-RUN go build -o /app
+RUN GOOS=linux GOARCH=amd64 go build -o main
 
-EXPOSE 8000
+FROM alpine:latest
 
-# run
-CMD ["/app"]
+WORKDIR /dist
+
+COPY --from=build /build/main /dist/main
+
+COPY database.json /dist/database.json
+
+CMD ["/dist/main"]

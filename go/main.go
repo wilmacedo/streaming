@@ -12,7 +12,7 @@ import (
 func main() {
 	LoadDatabase("database.json")
 
-	lis, err := net.Listen("tcp", ":8000")
+	lis, err := net.Listen("tcp", ":8001")
 	if err != nil {
 		log.Fatalf("cannot create listener: %s", err)
 	}
@@ -21,7 +21,7 @@ func main() {
 
 	api.RegisterAPIServer(serverRegistrar, service)
 
-	fmt.Println("🚀 Running gRPC server at port localhost:8000")
+	fmt.Println("🚀 Running gRPC server at port localhost:8001")
 	err = serverRegistrar.Serve(lis)
 	if err != nil {
 		log.Fatalf("impossible to serve: %s", err)
