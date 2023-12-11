@@ -3,10 +3,7 @@ name: 'comp-dist'
 
 services:
   rust-app:
+    container_name: rust-app
     build: ./rs
     ports:
       - "8000:8000"
-    environment:
-      - DATABASE_PATH=/app/database.json
-    volumes:
-      - ./database.json:/app/database.json

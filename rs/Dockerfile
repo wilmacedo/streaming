@@ -1,24 +1,17 @@
-FROM rust:1.71 as builder
+FROM rust:1.69-buster as builder
 
-RUN USER=root cargo new --bin app
 WORKDIR /app
 
-COPY ./Cargo.toml ./Cargo.lock ./
+COPY . .
 
-RUN cargo build --release
-RUN rm src/*.rs
-
-COPY ./src ./src
-
-RUN rm ./target/release/deps/app*
 RUN cargo build --release
 
 FROM debian:buster-slim
 
-COPY --from=builder /app/target/release/app /usr/local/bin/app
+WORKDIR /usr/local/bin
 
-# COPY ../database.json /app/database.json
+COPY --from=builder /app/target/release/rs .
 
-ENV DATABASE_PATH=/app/database.json
+COPY database.json /usr/local/bin/database.json
 
-CMD ["./app"]
+CMD ["./rs"]
