@@ -13,3 +13,9 @@ services:
     ports:
       - "8080:8080"
   
+
+  js-app:
+    container_name: js-app
+    build: ./js
+    ports:
+      - "8001:3000"
