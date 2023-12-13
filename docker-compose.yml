@@ -7,6 +7,12 @@ services:
     build: ./rs
     ports:
       - "8000:8000"
+  kt-app:
+    container_name: kt-app
+    build: ./kt
+    ports:
+      - "8080:8080"
+  
 
   js-app:
     container_name: js-app
